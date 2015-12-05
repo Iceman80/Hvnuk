@@ -26,11 +26,21 @@ public class Test4Page {
     public void test4Page() throws Exception {
         driver.get(baseUrl + "/");
         driver.findElement(By.linkText("Контакти")).click();
+
         try {
             assertEquals("063  294  95  85", driver.findElement(By.xpath(".//*[@id='post-99']/div/p[2]/em[1]")).getText());
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+
+        try {
+            driver.findElement(By.name("s")).clear();
+            driver.findElement(By.name("s")).sendKeys("Вашкевич\n");
+            assertEquals("Результати пошуку для фрази: Вашкевич", driver.findElement(By.cssSelector("h1.page-title")).getText());
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+
     }
 
     @After

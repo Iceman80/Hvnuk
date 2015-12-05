@@ -27,11 +27,25 @@ public class Test1Page {
     public void test1Page() throws Exception {
         driver.get(baseUrl + "/");
         driver.findElement(By.linkText("Головна")).click();
+
         try {
             assertEquals("Відповідальний за випуск: Бобіна О.В.", driver.findElement(By.xpath(".//*[@id='post-32']/div/div[1]/div/div[3]/div/div/p[2]")).getText());
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+
+        try {
+            assertEquals("", driver.findElement(By.xpath("//img[@alt='Titul']")).getText());
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+
+        try {
+            assertEquals("", driver.findElement(By.cssSelector("img[alt=\"Яндекс.Метрика\"]")).getText());
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+
     }
 
     @After

@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class Test3Page {
@@ -26,9 +27,22 @@ public class Test3Page {
     public void test3Page() throws Exception {
         driver.get(baseUrl + "/");
         driver.findElement(By.linkText("Архів")).click();
+
         try {
-            assertEquals("Продовжувати читання\n"+"ВИПУСК 8\n" +
+            assertEquals("Продовжувати читання\n" + "ВИПУСК 8\n" +
                     "→", driver.findElement(By.xpath(".//*[@id='post-109']/div/p[2]/a")).getText());
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+
+        try {
+            driver.findElement(By.xpath(".//*[@id='post-109']/div/p[2]/a")).click();
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+
+        try {
+            assertTrue(isElementPresent(By.cssSelector("a.wpfb-dlbtn > div")));
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
