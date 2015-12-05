@@ -19,13 +19,12 @@ public class Test2Page {
     @Before
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://hvnuk.com.ua/";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
     public void test2Page() throws Exception {
-        driver.get(baseUrl + "/");
+        driver.get("http://hvnuk.com.ua/");
         driver.findElement(By.linkText("Вимоги")).click();
 
         try {
