@@ -1,6 +1,3 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -15,14 +12,10 @@ public class Test1Page {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Before
-    public void setUp() throws Exception {
+
+    public void test1Page() throws Exception {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-
-    @Test
-    public void test1Page() throws Exception {
         driver.get("http://hvnuk.com.ua/");
         driver.findElement(By.linkText("Головна")).click();
 
@@ -43,17 +36,9 @@ public class Test1Page {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-
-    }
-
-    @After
-    public void tearDown() throws Exception {
         driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
     }
+
 
     private boolean isElementPresent(By by) {
         try {

@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) throws Exception {
-        int p = 3;//ко-во повторов
+        int p = 10;//ко-во повторов
         Loop test = new Loop();
 
         for (int x = 1; x <= p; x++) {
